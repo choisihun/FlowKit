@@ -18,7 +18,9 @@ public final class FlowProvider: ObservableObject {
   
   public init<C: View>(rootView: C,
                        customNavigationController: NavigationControllerSettings? = nil) {
-    let hostingController = _wrap(rootView)
+    let hostingController = UIHostingController(rootView: rootView
+                                                  .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                                  .background(Color.black.edgesIgnoringSafeArea(.all)))
     navigationController = {
       if let navigationController = customNavigationController?(hostingController) {
         return navigationController
