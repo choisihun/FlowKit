@@ -4,7 +4,7 @@ import SwiftUI
 public extension FlowProvider {
   
   fileprivate func _wrap<C: View>(_ view: C) -> UIViewController {
-    UIHostingController(rootView: view.background(Color.black.ignoresSafeArea()))
+    UIHostingController(rootView: view.background(Color.black.edgesIgnoringSafeArea(.all)))
   }
   
   // MARK: - Push View
