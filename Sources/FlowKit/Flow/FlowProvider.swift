@@ -13,6 +13,7 @@ public final class FlowProvider: ObservableObject {
       rootView: view
           .frame(maxWidth: .infinity, maxHeight: .infinity)
           .background(Color.black.edgesIgnoringSafeArea(.all))
+          .navigationBackButtonHidden(true)
       )
   }
   
