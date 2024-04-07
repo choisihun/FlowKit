@@ -3,14 +3,6 @@ import SwiftUI
 @available(iOS 13, *)
 public extension FlowProvider {
   
-  fileprivate func _wrap<C: View>(_ view: C) -> UIViewController {
-    UIHostingController(
-      rootView: view
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background(Color.black.edgesIgnoringSafeArea(.all))
-      )
-  }
-  
   // MARK: - Push View
   func push<C: View>(_ view: C, animated: Bool = true) {
     navigationController.pushViewController(_wrap(view), animated: animated)
