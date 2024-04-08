@@ -13,7 +13,6 @@ public final class FlowProvider: ObservableObject {
       rootView: view
           .frame(maxWidth: .infinity, maxHeight: .infinity)
           .background(Color.black.edgesIgnoringSafeArea(.all))
-          .navigationBarBackButtonHidden(true)
       )
   }
   
@@ -24,7 +23,6 @@ public final class FlowProvider: ObservableObject {
                                                   .background(Color.black.edgesIgnoringSafeArea(.all)))
     navigationController = {
       if let navigationController = customNavigationController?(hostingController) {
-          navigationController.setNavigationBarHidden(true, animated: false)
         return navigationController
       } else {
         return UINavigationController(rootViewController: hostingController)
