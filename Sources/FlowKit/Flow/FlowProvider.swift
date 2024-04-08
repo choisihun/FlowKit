@@ -24,6 +24,7 @@ public final class FlowProvider: ObservableObject {
                                                   .background(Color.black.edgesIgnoringSafeArea(.all)))
     navigationController = {
       if let navigationController = customNavigationController?(hostingController) {
+          navigationController.setNavigationBarHidden(true, animated: false)
         return navigationController
       } else {
         return UINavigationController(rootViewController: hostingController)
