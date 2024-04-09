@@ -52,6 +52,7 @@ public extension FlowProvider {
   func fullScreenSheet<C: View>(_ view: C, animated: Bool = true) {
     navigationController.modalPresentationStyle = .fullScreen
     navigationController.present(_wrap(view), animated: animated)
+      print(navigationController.modalPresentationStyle)
   }
   
   // MARK: - Alert
