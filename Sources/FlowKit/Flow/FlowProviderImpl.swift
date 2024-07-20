@@ -57,7 +57,7 @@ public extension FlowProvider {
   
   // MARK: - Alert
   func alert(_ alert: Alert, animated: Bool = true) {
-    topController.present(alert.toAlertController(), animated: animated)
+    navigationController.present(alert.toAlertController(), animated: animated)
   }
   
   // MARK: - Exit
