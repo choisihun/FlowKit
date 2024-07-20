@@ -57,7 +57,9 @@ public extension FlowProvider {
   
   // MARK: - Alert
   func alert(_ alert: Alert, animated: Bool = true) {
-    navigationController.present(alert.toAlertController(), animated: animated)
+      if let topController = UIApplication.shared.keyWindow?.rootViewController {
+          topController.present(alert.toAlertController(), animated: animated)
+      }
   }
   
   // MARK: - Exit
