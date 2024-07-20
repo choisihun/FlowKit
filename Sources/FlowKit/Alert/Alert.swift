@@ -12,7 +12,7 @@ public struct Alert {
     self.message = message
     self.buttons = [dismissButton ?? Self.Button.default({ () -> String in
       let bundle = Bundle.init(for: UIButton.self)
-      return bundle.localizedString(forKey: "Yes", value: nil, table: nil)
+      return bundle.localizedString(forKey: "확인", value: nil, table: nil)
     }())]
   }
   
@@ -58,7 +58,7 @@ public struct Alert {
     public static func cancel(_ action: @escaping () -> Void = { }) -> Alert.Button {
       Self.cancel({ () -> String in
         let bundle = Bundle.init(for: UIButton.self)
-        return bundle.localizedString(forKey: "Cancel", value: nil, table: nil)
+        return bundle.localizedString(forKey: "취소", value: nil, table: nil)
       }(), action: action)
     }
     
