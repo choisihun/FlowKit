@@ -54,6 +54,11 @@ public extension FlowProvider {
     navigationController.present(_wrap(view), animated: animated)
       print(navigationController.modalPresentationStyle)
   }
+
+  // MARK: - Dismiss
+  func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
+    navigationController.dismiss(animated: animated, completion: completion)
+  }
   
   // MARK: - Alert
   func alert(_ alert: Alert, animated: Bool = true) {
