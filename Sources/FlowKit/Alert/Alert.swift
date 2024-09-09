@@ -29,7 +29,11 @@ public struct Alert {
     self.buttons.forEach { button in
       alertController.addAction(.init(title: button.label,
                                       style: button.style,
-                                      handler: { _ in button.action() })
+                                      handler: { _ in
+                                        Task {
+                                            await button.action()
+                                        }
+                                      })
       )
     }
     return alertController
@@ -38,31 +42,31 @@ public struct Alert {
   public struct Button {
     
     let label: String
-    let action: () -> Void
+    let action: @Sendable () async -> Void
     let style: UIAlertAction.Style
     
-    private init(_ label: String, action: @escaping () -> Void, style: UIAlertAction.Style) {
+    private init(_ label: String, action: @Sendable () async -> Void, style: UIAlertAction.Style) {
       self.label = label
       self.action = action
       self.style = style
     }
     
-    public static func `default`(_ label: String, action: @escaping () -> Void = { }) -> Alert.Button {
+    public static func `default`(_ label: String, action: @Sendable () async -> Void = { }) -> Alert.Button {
       Self(label, action: action, style: .default)
     }
     
-    public static func cancel(_ label: String, action: @escaping () -> Void = { }) -> Alert.Button {
+    public static func cancel(_ label: String, action: @Sendable () async -> Void = { }) -> Alert.Button {
       Self(label, action: action, style: .cancel)
     }
     
-    public static func cancel(_ action: @escaping () -> Void = { }) -> Alert.Button {
+    public static func cancel(_ action: @Sendable () async -> Void = { }) -> Alert.Button {
       Self.cancel({ () -> String in
         let bundle = Bundle.init(for: UIButton.self)
         return bundle.localizedString(forKey: "취소", value: nil, table: nil)
       }(), action: action)
     }
     
-    public static func destructive(_ label: String, action: @escaping () -> Void = { }) -> Alert.Button {
+    public static func destructive(_ label: String, action: @Sendable () async -> Void = { }) -> Alert.Button {
       Self(label, action: action, style: .destructive)
     }
   }
