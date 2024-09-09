@@ -42,31 +42,31 @@ public struct Alert {
   public struct Button {
     
     let label: String
-    let action: @Sendable @escaping () async -> Void
+    let action: @Sendable () async -> Void
     let style: UIAlertAction.Style
     
-    private init(_ label: String, action: @escaping @Sendable () async -> Void, style: UIAlertAction.Style) {
+    public init(_ label: String, action: @Sendable @escaping () async -> Void, style: UIAlertAction.Style) {
       self.label = label
-      self.action = action
+      self.action = action // @escaping 클로저를 저장
       self.style = style
     }
     
-    public static func `default`(_ label: String, action: @escaping @Sendable () async -> Void = { }) -> Alert.Button {
+    public static func `default`(_ label: String, action: @Sendable @escaping () async -> Void = { }) -> Alert.Button {
       Self(label, action: action, style: .default)
     }
     
-    public static func cancel(_ label: String, action: @escaping @Sendable () async -> Void = { }) -> Alert.Button {
+    public static func cancel(_ label: String, action: @Sendable @escaping () async -> Void = { }) -> Alert.Button {
       Self(label, action: action, style: .cancel)
     }
     
-    public static func cancel(_ action: @escaping @Sendable () async -> Void = { }) -> Alert.Button {
+    public static func cancel(_ action: @Sendable @escaping () async -> Void = { }) -> Alert.Button {
       Self.cancel({ () -> String in
         let bundle = Bundle.init(for: UIButton.self)
         return bundle.localizedString(forKey: "취소", value: nil, table: nil)
       }(), action: action)
     }
     
-    public static func destructive(_ label: String, action: @escaping @Sendable () async -> Void = { }) -> Alert.Button {
+    public static func destructive(_ label: String, action: @Sendable @escaping () async -> Void = { }) -> Alert.Button {
       Self(label, action: action, style: .destructive)
     }
   }
