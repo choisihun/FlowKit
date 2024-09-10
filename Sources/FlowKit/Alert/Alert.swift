@@ -47,7 +47,7 @@ public struct Alert {
     
     public init(_ label: String, action: @Sendable @escaping () async -> Void, style: UIAlertAction.Style) {
       self.label = label
-      self.action = action // @escaping 클로저를 저장
+      self.action = action
       self.style = style
     }
     
