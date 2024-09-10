@@ -13,12 +13,12 @@ public final class FlowProvider: ObservableObject {
       rootView: view
           .frame(maxWidth: .infinity, maxHeight: .infinity)
           .background(Color.black.edgesIgnoringSafeArea(.all))
-      )
+    )
   }
   
   public init<C: View>(rootView: C,
                        customNavigationController: NavigationControllerSettings? = nil) {
-    let hostingController = UIHostingController(rootView: rootView
+      let hostingController = UIHostingController(rootView: rootView
                                                   .frame(maxWidth: .infinity, maxHeight: .infinity)
                                                   .background(Color.black.edgesIgnoringSafeArea(.all)))
     navigationController = {
