@@ -20,8 +20,10 @@ public extension FlowProvider {
   // MARK: - Pop View with Specific Count
   func pop(_ count: Int, animated: Bool = true) {
     let viewControllers = navigationController.viewControllers
-    let index = viewControllers[viewControllers.count - count]
-    navigationController.popToViewController(index, animated: animated)
+    if count > 0, count < viewControllers.count {
+      let index = viewControllers[viewControllers.count - count]
+      navigationController.popToViewController(index, animated: animated)
+    }
   }
   
   // MARK: - Pop View to Root
