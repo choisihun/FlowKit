@@ -2,7 +2,10 @@ import SwiftUI
 
 @available(iOS 13, *)
 public extension FlowProvider {
-  
+
+  fileprivate func _wrap<C: View>(_ view: C) -> UIViewController {
+    UIHostingController(rootView: view)
+  }
   // MARK: - Push View
   func push<C: View>(_ view: C, animated: Bool = true) {
     Task {
@@ -87,15 +90,6 @@ public extension FlowProvider {
     }
   }
 
-  // MARK: - Dismiss
-  func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
-    Task {
-      await MainActor.run {
-        navigationController.dismiss(animated: animated, completion: completion)
-      }
-    }
-  }
-    
   // MARK: - Alert
   func alert(_ alert: Alert, animated: Bool = true) {
     Task {
