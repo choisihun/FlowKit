@@ -60,6 +60,11 @@ public extension FlowProvider {
     viewController.modalPresentationStyle = .fullScreen
     navigationController.present(viewController, animated: animated)
   }
+
+  // MARK: - Dismiss
+  func dismiss(animated: Bool = true) {
+    navigationController.dismiss(animated: animated)
+  }
   
   // MARK: - Alert
   func alert(_ alert: Alert, animated: Bool = true) {
