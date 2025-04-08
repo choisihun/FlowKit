@@ -13,5 +13,10 @@ public struct FlowPresenter<C: View>: View {
   public var body: some View {
     flow.present()
       .environmentObject(flow)
+      .onAppear {
+        Task {
+          await performAsyncOperations()
+        }
+      }
   }
 }
