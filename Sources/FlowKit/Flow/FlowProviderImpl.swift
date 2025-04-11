@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 13, *)
+@available(iOS 16, *)
 public extension FlowProvider {
 
   fileprivate func _wrap<C: View>(_ view: C) -> UIViewController {
