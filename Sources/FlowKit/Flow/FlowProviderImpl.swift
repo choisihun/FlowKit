@@ -5,7 +5,7 @@ public extension FlowProvider {
 
   fileprivate func _wrap<C: View>(_ view: C) -> UIViewController {
     let bgUIColor = UIColor(named: "Background/default")
-      let bgColor = Color(bgUIColor)
+      let bgColor = Color(uiColor: bgUIColor)
       
       let hostingController = UIHostingController(rootView: view
         .background(bgColor)
