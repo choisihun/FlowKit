@@ -4,7 +4,7 @@ import SwiftUI
 public extension FlowProvider {
 
   fileprivate func _wrap<C: View>(_ view: C) -> UIViewController {
-    let bgUIColor = UIColor(named: "Background/default")
+    let bgUIColor = UIColor(named: "Background/default")!
       let bgColor = Color(uiColor: bgUIColor)
       
       let hostingController = UIHostingController(rootView: view
