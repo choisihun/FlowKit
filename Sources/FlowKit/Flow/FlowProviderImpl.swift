@@ -4,8 +4,16 @@ import SwiftUI
 public extension FlowProvider {
 
   fileprivate func _wrap<C: View>(_ view: C) -> UIViewController {
-    UIHostingController(rootView: view)
-  }
+    let bgUIColor = UIColor(named: "Background/default")
+      let bgColor = Color(bgUIColor)
+      
+      let hostingController = UIHostingController(rootView: view
+        .background(bgColor)
+        .ignoresSafeArea()
+        )
+      hostingController.view.backgroundColor = bgUIColor
+      return hostingController
+    }
   
   // MARK: - Push View
   func push<C: View>(_ view: C, animated: Bool = true) {
